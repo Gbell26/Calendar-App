@@ -1,0 +1,15 @@
+<h1>{{startMonth}} {{startYear}} {{numberOfDaysInCurrentMonth}} {{paddingDays}}</h1>
+
+<button type="button" (click)="nextMonth()">Next Month</button>
+<button type="button" (click)="previousMonth()">Previous Month</button>
+<div class="calendar-container">
+    <h2 class="day-week">Sunday</h2>
+    <h2 class="day-week">Monday</h2>
+    <h2 class="day-week">Tuesday</h2>
+    <h2 class="day-week">Wednesday</h2>
+    <h2 class="day-week">Thursday</h2>
+    <h2 class="day-week">Friday</h2>
+    <h2 class="day-week">Saturday</h2>
+    <div *ngFor="let number of dayPadding"></div>
+    <div class="day-container" *ngFor="let number of dayNumbers; let i=index">{{i+1}}</div>
+</div>
