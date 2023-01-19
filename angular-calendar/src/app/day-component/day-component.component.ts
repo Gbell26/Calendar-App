@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-day-component',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./day-component.component.css']
 })
 export class DayComponentComponent {
-      
+  month="";
+
 }

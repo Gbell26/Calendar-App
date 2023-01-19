@@ -1,6 +1,8 @@
 import { getLocaleDateFormat, getLocaleFirstDayOfWeek, getLocaleMonthNames } from '@angular/common';
 import { Interpolation } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
+import { Service } from '../data-service';
+
 
 @Component({
   selector: 'app-calendar-component',
@@ -8,6 +10,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./calendar-component.component.css']
 })
 export class CalendarComponentComponent {
+
+
   date:Date= new Date();
 
   //array of the names of each month so we can retrieve them based on numerical value returned from getMonth()
@@ -22,7 +26,6 @@ export class CalendarComponentComponent {
  //Get the starting month
   startMonthNum = this.date.getMonth();
   startMonth = this.months[this.startMonthNum];
-
   //Get the starting year
   startYear = this.date.getFullYear();
 
@@ -42,6 +45,7 @@ export class CalendarComponentComponent {
     for(var i=0;i<this.paddingDays;i++){
       this.dayPadding[i]=i;
     }
+
   }
   
   
@@ -134,6 +138,7 @@ export class CalendarComponentComponent {
     for(var i=0;i<this.paddingDays;i++){
       this.dayPadding[i]=i;
     }
+    
   }
   }
 }

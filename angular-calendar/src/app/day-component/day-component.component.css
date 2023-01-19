@@ -2,8 +2,11 @@
     padding-top:.2rem;
     padding-left:1rem;
     margin-left: 2rem;
-    background-color: blue;
+    background-color:white;
     width:30vw;
     height:80vh;
     border-radius: 1.5rem;
+    border-color:grey;
+    border-width: .01rem;
+    border:solid;
 }
