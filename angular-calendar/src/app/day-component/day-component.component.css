@@ -1,12 +1,15 @@
 .event-container{
     padding-top:.2rem;
     padding-left:1rem;
-    margin-left: 2rem;
+    margin-left:0;
+    margin-right:0;
+    margin-top:2rem;
     background-color:white;
-    width:30vw;
+    width:15vw;
     height:80vh;
     border-radius: 1.5rem;
-    border-color:grey;
-    border-width: .01rem;
     border:solid;
+    border-color: grey;
+    border-width: .1rem;
+    position: relative;
 }
