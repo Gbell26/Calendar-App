@@ -4,7 +4,9 @@
     top: 0;
     margin-left: 0;
     margin-right:0;
-    height:100vh;
-    width:5vw;
+    height:10vh;
+    width:100vw;
     background-color: blue;
+    padding-left: 20%;
+    padding-top: 2.5%;
 }

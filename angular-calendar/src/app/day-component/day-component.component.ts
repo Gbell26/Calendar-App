@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-day-component',
@@ -6,6 +6,8 @@ import { Component,OnInit } from '@angular/core';
   styleUrls: ['./day-component.component.css']
 })
 export class DayComponentComponent {
-  month="";
+  @Input() month="";
+  @Input() year=0;
+  @Input() day=0;
 
 }

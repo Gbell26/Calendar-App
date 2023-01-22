@@ -28,14 +28,13 @@ export class CalendarComponentComponent {
   startMonth = this.months[this.startMonthNum];
   //Get the starting year
   startYear = this.date.getFullYear();
-
+  dayOfMonth=0;
   //get the number of days in the month based on the starting month and year
   numberOfDaysInCurrentMonth = this.daysInMonth(this.startYear, this.startMonthNum);
  
   //Get the number of days you need to pad the beginning of the calendar in order to start on the
   //correct day of the week
   paddingDays=this.firstWeekDay(this.startYear, this.startMonthNum);
-
 
   ngOnInit(){
     //Fill dayNumbers array with the number of days in the starting month
