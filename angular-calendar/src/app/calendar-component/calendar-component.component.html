@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="parent">
 <app-sidebar-component [month]="startMonth" [year]="startYear"></app-sidebar-component>
 <div class="parent-calendar">
@@ -13,7 +12,7 @@
     <h2 class="day-week">Fri</h2>
     <h2 class="day-week">Sat</h2>
     <div class="day-container" *ngFor="let number of dayPadding"></div>
-    <div class="day-container" *ngFor="let number of dayNumbers; let i=index" tabindex={{i}}>{{i+1}}</div>
+    <div class="day-container" (click)="selectedDay(i)" *ngFor="let number of dayNumbers; let i=index" tabindex={{i}}>{{i+1}}</div>
 </div>
 <app-day-component class="event" [month]="startMonth" [year]="startYear" [day]="dayOfMonth"></app-day-component>
 </div>

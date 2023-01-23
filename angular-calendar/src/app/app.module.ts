@@ -5,19 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalendarComponentComponent } from './calendar-component/calendar-component.component';
 import { DayComponentComponent } from './day-component/day-component.component';
-import { Service } from './data-service';
 import { SidebarComponentComponent } from './sidebar-component/sidebar-component.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog'
+import { AddEventPopupComponent } from './add-event-popup/add-event-popup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponentComponent,
     DayComponentComponent,
-    SidebarComponentComponent
+    SidebarComponentComponent,
+    AddEventPopupComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

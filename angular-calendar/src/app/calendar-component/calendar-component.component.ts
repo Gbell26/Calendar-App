@@ -1,7 +1,6 @@
 import { getLocaleDateFormat, getLocaleFirstDayOfWeek, getLocaleMonthNames } from '@angular/common';
 import { Interpolation } from '@angular/compiler';
 import { Component} from '@angular/core';
-import { Service } from '../data-service';
 
 
 @Component({
@@ -28,7 +27,16 @@ export class CalendarComponentComponent {
   startMonth = this.months[this.startMonthNum];
   //Get the starting year
   startYear = this.date.getFullYear();
-  dayOfMonth=0;
+
+  //Get the starting day of the month
+  dayOfMonth=this.date.getDate();
+
+  //Change the day of the month when div is clicked
+  selectedDay(index:number){
+    this.dayOfMonth=index+1;
+  }
+
+
   //get the number of days in the month based on the starting month and year
   numberOfDaysInCurrentMonth = this.daysInMonth(this.startYear, this.startMonthNum);
  

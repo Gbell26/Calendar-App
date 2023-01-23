@@ -13,3 +13,11 @@
     border-width: .1rem;
     position: relative;
 }
+.create-event{
+    height:5rem;
+    width:5rem;
+    background-color: white;
+    font-size: 50px;
+    position: absolute;
+    bottom:0;
+}

@@ -2,11 +2,11 @@
     position: absolute;
     left: 0;
     top: 0;
-    margin-left: 0;
-    margin-right:0;
     height:10vh;
     width:100vw;
     background-color: blue;
-    padding-left: 20%;
-    padding-top: 2.5%;
+}
+.month{
+    padding: 0 0 0 0;
+    margin: 0 20% 0 0;
 }
