@@ -1,6 +1,8 @@
 import { getLocaleDateFormat, getLocaleFirstDayOfWeek, getLocaleMonthNames } from '@angular/common';
 import { Interpolation } from '@angular/compiler';
 import { Component} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import { AddEventPopupComponent } from '../add-event-popup/add-event-popup.component';
 
 
 @Component({
@@ -10,6 +12,7 @@ import { Component} from '@angular/core';
 })
 export class CalendarComponentComponent {
 
+  constructor(private dialog:MatDialog){}
 
   date:Date= new Date();
 
@@ -20,6 +23,7 @@ export class CalendarComponentComponent {
   //As well as starting on the first day
   dayNumbers: number[]=[];
   dayPadding:number[]=[];
+  endPadding:number[]=[];
 
 
  //Get the starting month
@@ -39,20 +43,26 @@ export class CalendarComponentComponent {
 
   //get the number of days in the month based on the starting month and year
   numberOfDaysInCurrentMonth = this.daysInMonth(this.startYear, this.startMonthNum);
+  numberOfDaysInPreviousMonth = this.daysInMonth(this.startYear, this.startMonthNum-1);
  
   //Get the number of days you need to pad the beginning of the calendar in order to start on the
   //correct day of the week
   paddingDays=this.firstWeekDay(this.startYear, this.startMonthNum);
+  endPaddingNum=42-(this.paddingDays+this.numberOfDaysInCurrentMonth);
 
   ngOnInit(){
     //Fill dayNumbers array with the number of days in the starting month
+    //end of month padding
     for(var i=0;i<this.numberOfDaysInCurrentMonth;i++){
       this.dayNumbers[i]=i;
     }
     for(var i=0;i<this.paddingDays;i++){
       this.dayPadding[i]=i;
     }
-
+    //not right
+    for(var i=0;i<this.endPaddingNum;i++){
+      this.endPadding[i]=i;
+    }
   }
   
   
@@ -68,6 +78,7 @@ export class CalendarComponentComponent {
     var daysInMonth = days.getDate();
      return daysInMonth;
   }
+
   //generate the calendar for the next month
   nextMonth(){
     //if it is december, go to january of next year
@@ -76,14 +87,20 @@ export class CalendarComponentComponent {
       this.startYear++;
       this.startMonth = this.months[this.startMonthNum];
       this.numberOfDaysInCurrentMonth = this.daysInMonth(this.startYear, this.startMonthNum);
+      this.numberOfDaysInPreviousMonth = this.daysInMonth(this.startYear, this.startMonthNum-1);
       this.paddingDays=this.firstWeekDay(this.startYear, this.startMonthNum);
+      this.endPaddingNum=42-(this.paddingDays+this.numberOfDaysInCurrentMonth);
       this.dayNumbers=[];
       this.dayPadding=[];
+      this.endPadding=[];
       for(var i=0;i<this.numberOfDaysInCurrentMonth;i++){
         this.dayNumbers[i]=i;
       }
       for(var i=0;i<this.paddingDays;i++){
         this.dayPadding[i]=i;
+      }
+      for(var i=0;i<this.endPaddingNum;i++){
+        this.endPadding[i]=i;
       }
     }
     else{
@@ -91,16 +108,22 @@ export class CalendarComponentComponent {
     this.startMonthNum++;
     this.startMonth = this.months[this.startMonthNum];
     this.numberOfDaysInCurrentMonth = this.daysInMonth(this.startYear, this.startMonthNum);
-    
+    this.numberOfDaysInPreviousMonth = this.daysInMonth(this.startYear, this.startMonthNum-1);
     //determine the first day of the month
     this.paddingDays=this.firstWeekDay(this.startYear, this.startMonthNum);
+    this.endPaddingNum=42-(this.paddingDays+this.numberOfDaysInCurrentMonth);
+    
     this.dayNumbers=[];
     this.dayPadding=[];
+    this.endPadding=[];
     for(var i=0;i<this.numberOfDaysInCurrentMonth;i++){
       this.dayNumbers[i]=i;
     }
     for(var i=0;i<this.paddingDays;i++){
       this.dayPadding[i]=i;
+    }
+    for(var i=0;i<this.endPaddingNum;i++){//not right
+      this.endPadding[i]=i;
     }
   }
   }
@@ -113,17 +136,23 @@ export class CalendarComponentComponent {
       this.startMonth = this.months[this.startMonthNum];
       //Get the number of days in the month
       this.numberOfDaysInCurrentMonth = this.daysInMonth(this.startYear, this.startMonthNum);
+      this.numberOfDaysInPreviousMonth = this.daysInMonth(this.startYear, this.startMonthNum-1);
       //Get the first week day of the month
       this.paddingDays=this.firstWeekDay(this.startYear, this.startMonthNum);
+      this.endPaddingNum=42-(this.paddingDays+this.numberOfDaysInCurrentMonth);
       //empty dayNumbers array & padding array
       this.dayNumbers=[];
       this.dayPadding=[];
+      this.endPadding=[];
       //fill the number of days in the month & how much padding needed
       for(var i=0;i<this.numberOfDaysInCurrentMonth;i++){
         this.dayNumbers[i]=i;
       }
       for(var i=0;i<this.paddingDays;i++){
         this.dayPadding[i]=i;
+      }
+      for(var i=0;i<this.endPaddingNum;i++){//not right
+        this.endPadding[i]=i;
       }
     }
     else{
@@ -133,11 +162,14 @@ export class CalendarComponentComponent {
     this.startMonth = this.months[this.startMonthNum];
     //Get the number of days in the month
     this.numberOfDaysInCurrentMonth = this.daysInMonth(this.startYear, this.startMonthNum);
+    this.numberOfDaysInPreviousMonth = this.daysInMonth(this.startYear, this.startMonthNum-1);
     //Get the first week day of the month
     this.paddingDays=this.firstWeekDay(this.startYear, this.startMonthNum);
+    this.endPaddingNum=42-(this.paddingDays+this.numberOfDaysInCurrentMonth);
     //empty dayNumbers array & padding array
     this.dayNumbers=[];
     this.dayPadding=[];
+    this.endPadding=[];
     //fill the number of days in the month & how much padding needed
     for(var i=0;i<this.numberOfDaysInCurrentMonth;i++){
       this.dayNumbers[i]=i;
@@ -145,7 +177,14 @@ export class CalendarComponentComponent {
     for(var i=0;i<this.paddingDays;i++){
       this.dayPadding[i]=i;
     }
-    
+    for(var i=0;i<this.endPaddingNum;i++){//not right
+      this.endPadding[i]=i;
+    }
+
   }
+  }
+  //open create event modal
+  newEvent(){
+    this.dialog.open(AddEventPopupComponent);
   }
 }

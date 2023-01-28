@@ -1,23 +1,46 @@
 .event-container{
     padding-top:.2rem;
     padding-left:1rem;
-    margin-left:0;
-    margin-right:0;
-    margin-top:10rem;
+    margin: 0 0 0 0;
     background-color:white;
     width:15vw;
-    height:80vh;
-    border-radius: 1.5rem;
+    height:95vh;
     border:solid;
     border-color: grey;
-    border-width: .1rem;
+    border-width: .05rem;
     position: relative;
 }
+.event-container > h1{
+    font-weight: normal;
+    color:#3C4043;
+}
 .create-event{
-    height:5rem;
-    width:5rem;
+    padding-bottom: 1.5rem;
+    height:4rem;
+    width:10rem;
     background-color: white;
-    font-size: 50px;
+    border:solid;
+    border-width:.01rem;
+    border-color: grey;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 2px grey;
+    font-size: 22px;
+    color:#3C4043;
     position: absolute;
-    bottom:0;
+    left:3rem;
+    bottom:4rem;
+}
+.create-event:hover{
+    transform:translateY(-2px) scale(1.05);
+    box-shadow: 0px 2px 5px grey;
+    transition: transform 100ms ease-in-out;
+    
+}
+.create-event:active{
+    transform: scale(.95);
+}
+.create-event > i{
+    margin-right:1rem;
+    font-size: 36px;
+    color:#FE6D73;
 }

@@ -1,8 +1,6 @@
 <div class="parent">
-<app-sidebar-component [month]="startMonth" [year]="startYear"></app-sidebar-component>
+<app-sidebar-component [month]="startMonth" [year]="startYear" (incrementMonth)="nextMonth()" (decrementMonth)="previousMonth()"></app-sidebar-component>
 <div class="parent-calendar">
-<button class="calendar-button" type="button" (click)="previousMonth()"><i class="fa fa-chevron-left" style="font-size:36px"></i></button>
-<button class="calendar-button" type="button" (click)="nextMonth()"><i class="fa fa-chevron-right" style="font-size:36px"></i></button>
 <div class="calendar-container">
     <h2 class="day-week">Sun</h2>
     <h2 class="day-week">Mon</h2>
@@ -11,8 +9,9 @@
     <h2 class="day-week">Thur</h2>
     <h2 class="day-week">Fri</h2>
     <h2 class="day-week">Sat</h2>
-    <div class="day-container" *ngFor="let number of dayPadding"></div>
-    <div class="day-container" (click)="selectedDay(i)" *ngFor="let number of dayNumbers; let i=index" tabindex={{i}}>{{i+1}}</div>
+    <div class="padding-container" *ngFor="let number of dayPadding; let i=index"><!--{{numberOfDaysInPreviousMonth-paddingDays+(i+1)}}--></div>
+    <div class="day-container" (click)="selectedDay(i)" *ngFor="let number of dayNumbers; let i=index" tabindex={{i}}><h1>{{i+1}}</h1><button class="add-event" (click)="newEvent()"><i class="fa-solid fa-plus"></i></button></div>
+   <!-- <div class="padding-container" *ngFor="let number of endPadding let i=index">{{i+1}}</div>-->
 </div>
 <app-day-component class="event" [month]="startMonth" [year]="startYear" [day]="dayOfMonth"></app-day-component>
 </div>
