@@ -1,9 +1,11 @@
 <div class="event-container">
     <h1>{{month}} {{day}}, {{year}}</h1>
     <div>
-    <p>Event Title</p>
-    <p>Time of Event</p>
-    <p>Location</p>
+    <p>{{events[0].title}}</p>
+    <p>{{events[0].starttime}}</p>
+    <p>{{events[0].endtime}}</p>
+    <p>{{events[0].location}}</p>
+    <p>{{events[0].description}}</p>
     </div>
-    <button class="create-event" (click)="newEvent()"><i class="fa-solid fa-calendar-plus"></i>Create</button>
+    <button>refresh</button>
 </div>

@@ -1,6 +1,8 @@
 import { Component,OnInit, Input } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import {event} from '../event';
+import { EVENTS } from '../eventlist';
 import { AddEventPopupComponent } from '../add-event-popup/add-event-popup.component';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-day-component',
@@ -9,13 +11,20 @@ import { AddEventPopupComponent } from '../add-event-popup/add-event-popup.compo
 })
 export class DayComponentComponent {
 
-  constructor(private dialog:MatDialog){}
+  constructor(private eventService: EventsService) {}
+
   @Input() month="";
   @Input() year=0;
   @Input() day=0;
 
-  //open event modal
-  newEvent(){
-    this.dialog.open(AddEventPopupComponent);
+  events:event[] = [];
+
+
+  getEvents():void{
+    this.events = this.eventService.getEvents();
+  }
+
+  ngOnInit():void{
+    this.getEvents();
   }
 }

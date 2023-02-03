@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, Output} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import { AddEventPopupComponent } from '../add-event-popup/add-event-popup.component';
+
 
 @Component({
   selector: 'app-sidebar-component',
@@ -6,6 +9,8 @@ import { Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrls: ['./sidebar-component.component.css']
 })
 export class SidebarComponentComponent {
+
+  constructor(private dialog:MatDialog){}
   @Input() month=""
   @Input() year=0
 
@@ -18,5 +23,9 @@ export class SidebarComponentComponent {
   lastMonth(){
     this.decrementMonth.emit();
   } 
+
+  newEvent(){
+    this.dialog.open(AddEventPopupComponent);
+  }
 }
 
