@@ -23,7 +23,6 @@ export class SidebarComponentComponent {
   lastMonth(){
     this.decrementMonth.emit();
   } 
-
   newEvent(){
     this.dialog.open(AddEventPopupComponent);
   }

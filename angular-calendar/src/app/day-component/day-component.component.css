@@ -9,6 +9,7 @@
     border-color: grey;
     border-width: .05rem;
     position: relative;
+    overflow-y: scroll;
 }
 .event-container > h1{
     font-weight: normal;

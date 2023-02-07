@@ -1,11 +1,10 @@
 <div class="event-container">
     <h1>{{month}} {{day}}, {{year}}</h1>
-    <div>
-    <p>{{events[0].title}}</p>
-    <p>{{events[0].starttime}}</p>
-    <p>{{events[0].endtime}}</p>
-    <p>{{events[0].location}}</p>
-    <p>{{events[0].description}}</p>
+    <div class="event-list" *ngFor="let number of daysEvents; let i=index" [(ngModel)]="daysEvents" name="event">
+        <p>{{daysEvents[i].title}}</p>
+        <p>{{daysEvents[i].starttime}}</p>
+        <p>{{daysEvents[i].endtime}}</p>
+        <p>{{daysEvents[i].location}}</p>
+        <p>{{daysEvents[i].description}}</p><br><br>
     </div>
-    <button>refresh</button>
 </div>

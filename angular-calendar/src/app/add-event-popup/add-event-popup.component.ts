@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import {event} from '../event';
-import { EVENTS } from '../eventlist';
+import { EventsService } from '../events.service';
+
 
 @Component({
   selector: 'app-add-event-popup',
@@ -9,62 +10,37 @@ import { EVENTS } from '../eventlist';
 })
 export class AddEventPopupComponent {
   
+  constructor(private eventService:EventsService){}
+
   newEvent:event={
     id: 0,
     title: "",
-    day: 0,
-    month: "",
-    year: 0,
+    day: 7,
+    month: "February",
+    year: 2023,
     location: "",
-    starttime:"",
-    endtime:"",
+    starttime:"12:00",
+    endtime:"12:00",
     description:"",
   }
 
-    @Output() dayrefresh = new EventEmitter
-    refresh(){
-      var eventTitle=<HTMLInputElement>document.getElementById("ename");
-      var startTime=<HTMLInputElement> document.getElementById("starttime");
-      var endTime=<HTMLInputElement> document.getElementById("endtime");
-      var eventLocation=<HTMLInputElement> document.getElementById("location");
-      var eventDescription=<HTMLTextAreaElement> document.getElementById("description");
-      this.newEvent={
-        id: 0,
-        title: eventTitle.value,
-        day: 3,
-        month:"January" ,
-        year: 2023,
-        location: eventLocation.value,
-        starttime:startTime.value,
-        endtime:endTime.value,
-        description:eventDescription.value,
-      }
-      EVENTS[0]=this.newEvent;
-      
-      this.dayrefresh.emit();
-    } 
   
   AddToList(){
-    var eventTitle=<HTMLInputElement>document.getElementById("ename");
+    /*var eventTitle=<HTMLInputElement>document.getElementById("ename");
     var startTime=<HTMLInputElement> document.getElementById("starttime");
     var endTime=<HTMLInputElement> document.getElementById("endtime");
     var eventLocation=<HTMLInputElement> document.getElementById("location");
     var eventDescription=<HTMLTextAreaElement> document.getElementById("description");
     //var date=document.getElementById("");
+    this.newEvent.title=eventTitle.value;
+    this.newEvent.starttime=startTime.value;
+    this.newEvent.endtime=endTime.value;
+    this.newEvent.location=eventLocation.value;
+    this.newEvent.description=eventDescription.value;*/
     
-    this.newEvent={
-      id: 0,
-      title: eventTitle.value,
-      day: 3,
-      month:"January" ,
-      year: 2023,
-      location: eventLocation.value,
-      starttime:startTime.value,
-      endtime:endTime.value,
-      description:eventDescription.value,
-    }
-    EVENTS[0]=this.newEvent;
-    this.refresh();
+    this.eventService.addEvents(this.newEvent);
+  }
+  Cancel(){
   }
 
 }

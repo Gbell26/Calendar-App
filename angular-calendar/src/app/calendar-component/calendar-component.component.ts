@@ -1,6 +1,6 @@
 import { getLocaleDateFormat, getLocaleFirstDayOfWeek, getLocaleMonthNames } from '@angular/common';
 import { Interpolation } from '@angular/compiler';
-import { Component} from '@angular/core';
+import { Component, EventEmitter, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { AddEventPopupComponent } from '../add-event-popup/add-event-popup.component';
 
@@ -37,9 +37,8 @@ export class CalendarComponentComponent {
 
   //Change the day of the month when div is clicked
   selectedDay(index:number){
-    this.dayOfMonth=index+1;
+    this.dayOfMonth=index+1; 
   }
-
 
   //get the number of days in the month based on the starting month and year
   numberOfDaysInCurrentMonth = this.daysInMonth(this.startYear, this.startMonthNum);
@@ -93,6 +92,7 @@ export class CalendarComponentComponent {
       this.dayNumbers=[];
       this.dayPadding=[];
       this.endPadding=[];
+      
       for(var i=0;i<this.numberOfDaysInCurrentMonth;i++){
         this.dayNumbers[i]=i;
       }

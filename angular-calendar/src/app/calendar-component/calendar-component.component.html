@@ -9,9 +9,10 @@
     <h2 class="day-week">Thur</h2>
     <h2 class="day-week">Fri</h2>
     <h2 class="day-week">Sat</h2>
-    <div class="padding-container" *ngFor="let number of dayPadding; let i=index"><!--{{numberOfDaysInPreviousMonth-paddingDays+(i+1)}}--></div>
-    <div class="day-container" (click)="selectedDay(i)" *ngFor="let number of dayNumbers; let i=index" tabindex={{i}}><h1>{{i+1}}</h1><button class="add-event" (click)="newEvent()"><i class="fa-solid fa-plus"></i></button></div>
-   <!-- <div class="padding-container" *ngFor="let number of endPadding let i=index">{{i+1}}</div>-->
+    <div class="padding-container" *ngFor="let number of dayPadding; let i=index"></div>
+    <div class="day-container" (click)="selectedDay(i)" *ngFor="let number of dayNumbers; let i=index" tabindex={{i}}>
+        <h1>{{i+1}}</h1><button class="add-event" (click)="newEvent()"><i class="fa-solid fa-plus"></i></button>
+    </div>
 </div>
 <app-day-component class="event" [month]="startMonth" [year]="startYear" [day]="dayOfMonth"></app-day-component>
 </div>

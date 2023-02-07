@@ -1,7 +1,8 @@
 <form class="event-form">
-    <input class="event-title" type="text" id="ename" name="ename" placeholder="Add Title           "><br><br>
+    {{newEvent | json}}
+    <input [(ngModel)]="newEvent.title" name="title" class="event-title" type="text" id="ename" name="ename" placeholder="Add Title           " ><br><br>
     <div class="time-input">
-    <input class=start-time list="starttime" name="event-start" placeholder="12:00"/>
+    <input class=start-time list="starttime" placeholder="12:00" [(ngModel)]="newEvent.starttime" name="event-start">
     <datalist id="starttime">
         <option value="12:00">
         <option value="12:15">
@@ -53,7 +54,7 @@
         <option value="11:45">
     </datalist>
     <p>-</p>
-    <input class=end-time list="starttime" name="event-end" placeholder="12:00"/>
+    <input class=end-time list="endtime" placeholder="12:00" [(ngModel)]="newEvent.endtime" name="event-end">
     <datalist id="endtime">
         <option value="12:00">
         <option value="12:15">
@@ -106,7 +107,7 @@
     </datalist>
     </div>
     <br><br>
-    <input class="event-location" type="text" id="location" name="location" placeholder="Location"><br><br>
-    <textarea class="event-description" id="description" name="description" placeholder="Description"></textarea>
-    <button class="add-button" (click)="refresh()">ADD</button><button class="cancel-button">CANCEL</button>
+    <input class="event-location" type="text" id="location" placeholder="Location" [(ngModel)]="newEvent.location" name="location"><br><br>
+    <textarea class="event-description" id="description" placeholder="Description" [(ngModel)]="newEvent.description" name="description" ></textarea>
+    <button class="add-button" (click)="AddToList()">ADD</button><button class="cancel-button" (click)="Cancel()">CANCEL</button>
 </form>
