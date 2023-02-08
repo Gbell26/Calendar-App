@@ -1,9 +1,8 @@
 import { getLocaleDateFormat, getLocaleFirstDayOfWeek, getLocaleMonthNames } from '@angular/common';
 import { Interpolation } from '@angular/compiler';
-import { Component, EventEmitter, Output} from '@angular/core';
+import { Component, EventEmitter, Output,} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { AddEventPopupComponent } from '../add-event-popup/add-event-popup.component';
-
 
 @Component({
   selector: 'app-calendar-component',
@@ -13,6 +12,7 @@ import { AddEventPopupComponent } from '../add-event-popup/add-event-popup.compo
 export class CalendarComponentComponent {
 
   constructor(private dialog:MatDialog){}
+
 
   date:Date= new Date();
 

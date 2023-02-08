@@ -26,18 +26,6 @@ export class AddEventPopupComponent {
 
   
   AddToList(){
-    /*var eventTitle=<HTMLInputElement>document.getElementById("ename");
-    var startTime=<HTMLInputElement> document.getElementById("starttime");
-    var endTime=<HTMLInputElement> document.getElementById("endtime");
-    var eventLocation=<HTMLInputElement> document.getElementById("location");
-    var eventDescription=<HTMLTextAreaElement> document.getElementById("description");
-    //var date=document.getElementById("");
-    this.newEvent.title=eventTitle.value;
-    this.newEvent.starttime=startTime.value;
-    this.newEvent.endtime=endTime.value;
-    this.newEvent.location=eventLocation.value;
-    this.newEvent.description=eventDescription.value;*/
-    
     this.eventService.addEvents(this.newEvent);
   }
   Cancel(){

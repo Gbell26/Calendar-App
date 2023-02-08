@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { event } from './event';
 import { EVENTS } from './eventlist';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject} from 'rxjs';
 
 
 @Injectable({
@@ -11,14 +11,20 @@ export class EventsService {
 
   constructor() { }
 
-  addEvents(newEvent: event) {
-    EVENTS.push(newEvent);
-    window.alert('Your event has been added!');
-    window.alert(`${EVENTS[7].title}`)
+  private refresh = new Subject<void>();
+
+  events = of(EVENTS);
+
+  get refreshNeeded(){
+    return this.refresh;
   }
 
-  getEvents():Observable<event[]> {
-    const events = of(EVENTS);
-    return events;
+  addEvents(newEvent: event) {
+    EVENTS.push(newEvent);
+    this.refresh.next();
+  }
+
+  getEvents(){
+    return EVENTS;
   }
 }
