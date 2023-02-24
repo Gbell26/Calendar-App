@@ -4,9 +4,6 @@
     padding-left: 4rem;
     padding-top:2rem;
 }
-.date-picker{
-    
-}
 .start-time{
     margin-right: 0;
 }
@@ -30,7 +27,12 @@
     font-size: 1.5rem;
     text-decoration: underline;
 }
-input{
+.event-title:hover{
+    background-color: #dadce091;
+}
+
+/* this looks good for all most inputs. But ruins datepicker*/
+/*input{
     border:none;
     background-color: white;
     outline: none;
@@ -38,14 +40,17 @@ input{
 input:hover{
     background-color: #dadce091;
 }
+*/
 .event-location{
     width:12rem;
     height:1.5rem;
+    outline: none;
 }
 .event-description{
     width:15rem;
     height:10rem;
     outline:none;
+    background-color: white;
 }
 .time-input{
     display:grid;
