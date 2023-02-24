@@ -9,7 +9,11 @@ import { DayComponentComponent } from './day-component/day-component.component';
 import { SidebarComponentComponent } from './sidebar-component/sidebar-component.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { AddEventPopupComponent } from './add-event-popup/add-event-popup.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input'
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { AddEventPopupComponent } from './add-event-popup/add-event-popup.compon
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
