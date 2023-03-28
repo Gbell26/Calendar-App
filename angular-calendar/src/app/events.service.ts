@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { event } from './event';
 import { EVENTS } from './eventlist';
-import { Observable, of, Subject} from 'rxjs';
+import { of, Subject} from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class EventsService {
 
   constructor() { }

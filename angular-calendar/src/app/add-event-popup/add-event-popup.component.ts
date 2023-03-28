@@ -42,6 +42,7 @@ export class AddEventPopupComponent {
     this.eventService.addEvents(this.newEvent);
     this.dialog.closeAll();
   }
+  
   Cancel(){
     this.dialog.closeAll();
   }
