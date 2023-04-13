@@ -1,11 +1,10 @@
 <div class="event-container">
     <h1>{{month}} {{day}}, {{year}}</h1>
-    <div class="event-list" *ngFor="let number of daysEvents; let i=index" >
-        <p>{{daysEvents[i].title}}</p>
-        <p>{{daysEvents[i].starttime}}</p>
-        <p>{{daysEvents[i].endtime}}</p>
-        <p>{{daysEvents[i].location}}</p>
-        <p>{{daysEvents[i].description}}</p><br><br>
-        <button>Delete</button>
+    <div class="event-list" *ngFor="let event of events$ | async" >
+        <h1>{{event.Title}}</h1>
+        <p>{{event.StartTime}} - {{event.EndTime}}</p>
+        <p>{{event.Location}}</p>
+        <p>{{event.Description}}</p><br><br>
+        <button (click)="deleteEvent(event.EID)">Delete</button>
     </div>
 </div>

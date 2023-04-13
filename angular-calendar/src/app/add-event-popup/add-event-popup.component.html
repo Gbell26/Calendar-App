@@ -1,5 +1,5 @@
 <form class="event-form">
-    <input [(ngModel)]="newEvent.title" name="title" class="event-title" type="text" id="ename" name="ename" placeholder="Add Title           " ><br><br>
+    <input [(ngModel)]="newEvent.Title" name="title" class="event-title" type="text" id="ename" name="ename" placeholder="Add Title           " ><br><br>
     <mat-form-field appearance="fill" class = date-picker>
         <mat-label>Choose a date</mat-label>
         <input matInput (dateInput)="OnDateChange($event.value)" [matDatepicker]="picker" id="matInput">
@@ -8,7 +8,7 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     <div class="time-input">
-    <select class=start-time list="starttime" [(ngModel)]="newEvent.starttime" name="event-start">
+    <select class=start-time list="starttime" [(ngModel)]="newEvent.StartTime" name="event-start">
         <option value="12:00">12:00</option>
         <option value="12:15">12:15</option>
         <option value="12:30">12:30</option>
@@ -59,7 +59,7 @@
         <option value="11:45">11:45</option>
     </select>
     <p>-</p>
-    <select list="endtime" class=end-time placeholder="12:00" [(ngModel)]="newEvent.endtime" name="event-end">
+    <select list="endtime" class=end-time placeholder="12:00" [(ngModel)]="newEvent.EndTime" name="event-end">
         <option value="12:00">12:00</option>
         <option value="12:15">12:15</option>
         <option value="12:30">12:30</option>
@@ -111,7 +111,7 @@
     </select>
     </div>
     <br><br>
-    <input class="event-location" type="text" id="location" placeholder="Location" [(ngModel)]="newEvent.location" name="location"><br><br>
-    <textarea class="event-description" id="description" placeholder="Description" [(ngModel)]="newEvent.description" name="description" ></textarea>
+    <input class="event-location" type="text" id="location" placeholder="Location" [(ngModel)]="newEvent.Location" name="location"><br><br>
+    <textarea class="event-description" id="description" placeholder="Description" [(ngModel)]="newEvent.Description" name="description" ></textarea>
     <button class="add-button" (click)="AddToList()">ADD</button><button class="cancel-button" (click)="Cancel()">CANCEL</button>
 </form>

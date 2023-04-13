@@ -1,6 +1,8 @@
 import { Component,OnInit, Input, SimpleChange, SimpleChanges} from '@angular/core';
-import {event} from '../event';
+import {Event} from '../models/event';
 import { EventsService } from '../events.service';
+import { Observable } from 'rxjs'
+import { tap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-day-component',
@@ -10,43 +12,34 @@ import { EventsService } from '../events.service';
 export class DayComponentComponent {
 
   constructor(private eventService: EventsService) {}
-
-  
+  events$!:Observable<Event[]>
 
   @Input() month="";
   @Input() year=0;
   @Input() day=0;
 
-  events:event[] = [];
-  daysEvents:event[] = [];
+  selectedEventID = 0;
 
-  
+  ngOnInit(): void{
+    this.events$ = this.eventService.getEvents(this.month,this.day,this.year);
+  }
+
+
   ngOnChanges(changes: SimpleChanges){
     console.log(changes);
-    this.daysEvents=[];
-    this.getDaysEvents();
+    this.events$ = this.eventService.getEvents(this.month, this.day,this.year);
   }
 
-  ngOnInit(){
-    this.events=this.getEvents();
-    this.getDaysEvents();
-    this.eventService.refreshNeeded
-      .subscribe(() => {
-        this.events=this.getEvents();
-        this.daysEvents=[];
-        this.getDaysEvents();
-      });
+  deleteEvent(id:number):void{
+    //this.selectedEventID = id;
+    console.log(id);
+    this.events$ = this.eventService.deleteEvents(id)
+    .pipe(tap(() => (this.events$ = this.eventService.getEvents(this.month, this.day,this.year))));
+    
   }
-
+  
   //get the events for this day
-  getDaysEvents(){
-    for(var i=0; i < this.events.length; i++){
-      if(this.events[i].day == this.day && this.events[i].month == this.month){
-        this.daysEvents.push(this.events[i]);
-      }
-    }
-  }
-
+  
     //Ways to delete an event:
   /*
   1. delete event button similar to add event button. press button enter event id delete ----> easiest way but not a good solution.
@@ -57,7 +50,7 @@ export class DayComponentComponent {
   event id = number of events +1?
   event id = date + number of events on that day + 1
   
-  */
+  
   selectedEventID: number = 0;
   selectedEvent(index:number){
     
@@ -65,5 +58,5 @@ export class DayComponentComponent {
   //get events array
   getEvents():event[]{
       return this.eventService.getEvents();
-  }
+  }*/
 }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import {event} from '../event';
+import {Event} from '../models/event';
 import { EventsService } from '../events.service';
 import {MatDialog} from '@angular/material/dialog';
 
@@ -15,16 +15,17 @@ export class AddEventPopupComponent {
 
   months=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-  newEvent:event={
-    id: 0,
-    title: "",
-    day: 8,
-    month: "February",
-    year: 2023,
-    location: "",
-    starttime:"12:00",
-    endtime:"12:00",
-    description:"",
+  newEvent:Event={
+    EID: 0,
+    Username: "gbell",
+    Title: "",
+    Day: 8,
+    Month: "February",
+    Year: 2023,
+    Location: "",
+    StartTime:"12:00",
+    EndTime:"12:00",
+    Description:"",
   }
 
   
@@ -36,10 +37,10 @@ export class AddEventPopupComponent {
     var newDateArray = newDate.split("/");
 
     //date is parsed convert month from number to associated month name
-    this.newEvent.month = this.months[+newDateArray[0] - 1];
-    this.newEvent.day = +newDateArray[1];
-    this.newEvent.year = +newDateArray[2];
-    this.eventService.addEvents(this.newEvent);
+    this.newEvent.Month = this.months[+newDateArray[0] - 1];
+    this.newEvent.Day = +newDateArray[1];
+    this.newEvent.Year = +newDateArray[2];
+    this.eventService.addEvents(this.newEvent).subscribe();
     this.dialog.closeAll();
   }
   

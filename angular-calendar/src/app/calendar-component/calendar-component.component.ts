@@ -13,7 +13,6 @@ export class CalendarComponentComponent {
 
   constructor(private dialog:MatDialog){}
 
-
   date:Date= new Date();
 
   //array of the names of each month so we can retrieve them based on numerical value returned from getMonth()
@@ -52,6 +51,7 @@ export class CalendarComponentComponent {
   ngOnInit(){
     //Fill dayNumbers array with the number of days in the starting month
     //end of month padding
+
     for(var i=0;i<this.numberOfDaysInCurrentMonth;i++){
       this.dayNumbers[i]=i;
     }
@@ -62,6 +62,7 @@ export class CalendarComponentComponent {
     for(var i=0;i<this.endPaddingNum;i++){
       this.endPadding[i]=i;
     }
+
   }
   
   

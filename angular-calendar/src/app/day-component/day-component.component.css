@@ -15,3 +15,21 @@
     font-weight: normal;
     color:#3C4043;
 }
+.event-list{
+    padding: .2rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+.event-list > h1{
+    font-weight: normal;
+    color:#3C4043;
+    font-size: 1.4rem;
+    text-decoration: underline;
+}
+.event-list > button{
+    margin-top: 0;
+    font-size:22px;
+    height:2rem;
+    width:6rem;
+    padding:0;
+}

@@ -1,21 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Event } from './models/event';
 import { Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { of, Subject} from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { ErrorHandlerService } from './error-handler.service';
-
+import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root'
 })
+export class UserService {
 
-export class EventsService {
-
-
-
-  private url = 'http://localhost:3000/events';
+  private url = 'http://localhost:3000/login';
 
   httpOptions: { headers: HttpHeaders} = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
@@ -24,32 +19,28 @@ export class EventsService {
   constructor(private errorHandlerService:ErrorHandlerService, 
     private http: HttpClient) { }
 
-  getEvents(Month:string, Day:number, Year:number):Observable<Event[]>{
-    return this.http.get<Event[]>(`${this.url}/${Day}/${Month}/${Year}`,{ responseType: "json"}).pipe(
+  validatePassword(username:string):Observable<Partial<User>>{
+    return this.http.get<Partial<User>>(`${this.url}/${username}`,{ responseType: "json"}).pipe(
       tap((_) => console.log('fetched events')),
       catchError(
-       this.errorHandlerService.handleError<Event[]>("get", [])
+       this.errorHandlerService.handleError<Partial<User>>("get")
       ));
   }
 
-  addEvents(newEvent:Event): Observable<any>{
-    console.log(JSON.stringify(newEvent));
-    return this.http.post<Event>(this.url, JSON.stringify(newEvent), this.httpOptions).pipe(
+  addUser(newUser:User): Observable<any>{
+    console.log(JSON.stringify(newUser));
+    return this.http.post<User>(this.url, JSON.stringify(newUser), this.httpOptions).pipe(
       catchError(
         this.errorHandlerService.handleError<any>("post")
       ));
     }
 
-    deleteEvents(id:number): Observable<any>{
-      console.log(id);
-      const url = `http://localhost:3000/events/${id}`;
-      return this.http.delete<Event>(url, this.httpOptions).pipe(
+    deleteEvents(username:string): Observable<any>{
+      console.log(username);
+      const url = `http://localhost:3000/login/${username}`;
+      return this.http.delete<User>(url, this.httpOptions).pipe(
         catchError(
           this.errorHandlerService.handleError<any>("delete")
         ));
       }
 }
-
-
-
-
